@@ -51,9 +51,21 @@ export interface Product {
 }
 
 export interface ProductCart {
-  id: number,
-  title: string,
-  price: number,
-  size: string,
-  count: number,
+  id: number;
+  title: string;
+  price: number;
+  size: string;
+  count: number;
+}
+
+export interface Order {
+  owner: {
+    phone: string;
+    address: string;
+  };
+  items: {
+    id: number;
+    price: number;
+    count: number;
+  }[];
 }

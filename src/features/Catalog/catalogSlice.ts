@@ -3,7 +3,7 @@ import { RootState } from "../../app/store";
 import {
   ProductCategory,
   ProductCard,
-} from "../../entities/BosaNoga";
+} from "../../entities/Service";
 
 export interface catalogState {
   items: ProductCard[];
@@ -41,7 +41,7 @@ export const catalogSlice = createSlice({
     catalogLoadingStarted(state) {
       state.catalogloading = true;
     },
-    selectCategoryId(state, action) {
+    setCategoryById(state, action) {
       state.selectedCategoryId = action.payload;
     },
     updateCatalog(state, action) {
@@ -75,7 +75,7 @@ export const selectCatalog = (state: RootState) => state.catalog;
 export const {
   categoriesLoadingStarted,
   categoriesLoaded,
-  selectCategoryId,
+  setCategoryById,
   catalogLoadingStarted,
   updateCatalog,
   addCatalog,

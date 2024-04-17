@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch } from "../../app/hooks";
 import { useParams, useNavigate } from "react-router-dom";
-import { BosaNogaAPI, Product } from "../../entities/BosaNoga";
+import { BosaNogaAPI, Product } from "../../entities/Service";
 import Size from "../../entities/Size/Size";
 import { addProduct } from "../Cart/cartSlice";
 

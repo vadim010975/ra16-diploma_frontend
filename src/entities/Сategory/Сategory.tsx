@@ -1,15 +1,16 @@
 import { FC } from "react";
-import { type ProductCategory } from "../BosaNoga";
+import { type ProductCategory } from "../Service";
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { selectCatalog, selectCategoryId } from "../../features/Catalog/catalogSlice";
+import { selectCatalog, setCategoryById } from "../../features/Catalog/catalogSlice";
 
 const Category: FC<{ category: ProductCategory }> = ({ category }) => {
 
   const dispatch = useAppDispatch();
   const { selectedCategoryId } = useAppSelector(selectCatalog);
 
-  const handleClick = () => {
-    dispatch(selectCategoryId(category.id));
+  const handleClick: React.MouseEventHandler<HTMLAnchorElement> = (e) => {
+    e.preventDefault();
+    dispatch(setCategoryById(category.id));
   }
 
   return (

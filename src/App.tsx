@@ -4,10 +4,10 @@ import Layout from "./app/Layout";
 import Catalog from "./features/Catalog/Catalog";
 import About from "./entities/About/About";
 import Contacts from "./entities/Contacts/Contacts";
-import DefaultMain from "./features/DefaultMain/DefaultMain";
 import ProductPage from "./features/ProductPage/ProductPage";
 import Cart from "./features/Cart/Cart";
 import Order from "./features/Order/Order";
+import TopSales from "./features/TopSales/TopSales";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +16,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        Component: DefaultMain,
+        element: <><TopSales /><Catalog /></>,
       },
       {
         path: "/catalog.html",

@@ -10,6 +10,7 @@ export default function TopSales() {
 
   useEffect(() => {
     dispatch(fetchTopSales());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

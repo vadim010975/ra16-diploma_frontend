@@ -17,3 +17,7 @@
 .form-reset-btn:focus {
   outline: none;
 }
+
+.form-reset-btn.hide {
+  display: none;
+}

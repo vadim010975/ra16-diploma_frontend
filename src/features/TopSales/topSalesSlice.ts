@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
-import { BosaNogaAPI, type ProductCard } from "../../entities/BosaNoga";
+import { BosaNogaAPI, type ProductCard } from "../../entities/Service";
 
 export interface ListMoviesState {
   items: ProductCard[],

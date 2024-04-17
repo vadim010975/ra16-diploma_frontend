@@ -5,16 +5,17 @@ import Categories from "../Categories/Categories";
 import { selectCatalog } from "./catalogSlice";
 import Card from "../../entities/Card/Card";
 import { fetchCatalogThunk } from "./fetchCatalogThunk";
-import SearchForm from "../../entities/SearchForm/SearchForm";
+import SearchForm from "../SearchForm/SearchForm";
 
 
-export default function Catalog({ isSearch = false } : { isSearch: boolean }) {
+export default function Catalog({ isSearch = false } : { isSearch?: boolean }) {
 
   const dispatch = useAppDispatch();
   const { items, selectedCategoryId, visibilityBtn } = useAppSelector(selectCatalog);
 
   useEffect(() => {
     dispatch(fetchCatalogThunk(null));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCategoryId]);
 
   const handleClick = () => {

@@ -1,17 +1,29 @@
-import { useState, useRef } from "react";
-import { useAppDispatch } from "../../app/hooks";
+import "./Icons.css";
+import { useState, useRef, useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { setSearch } from "../Catalog/catalogSlice";
 import { useNavigate } from "react-router-dom";
+import { selectCart } from "../Cart/cartSlice";
 
 export default function Icons() {
 
   const formRef = useRef(null);
-
   const dispatch = useAppDispatch();
-
+  const { products } = useAppSelector(selectCart);
   const navigate = useNavigate();
 
   const [visibility, setVisibility] = useState<boolean>(false);
+  const [cartActivity, setCartActivity] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (products.length > 0) {
+      setCartActivity(true);
+      return;
+    }
+    setCartActivity(false);
+    navigate("/");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [products]);
 
   const handleClick: React.MouseEventHandler<HTMLDivElement> = () => {
     setVisibility(!visibility);
@@ -32,7 +44,7 @@ export default function Icons() {
   const processForm = (form: HTMLFormElement) => {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
-    const searchWord = data.search as string;
+    const searchWord = (data.search as string).trim();
     if (searchWord) {
       dispatch(setSearch(searchWord));
       navigate("/catalog.html");
@@ -41,12 +53,18 @@ export default function Icons() {
     }
   }
 
+  const goToCart = () => {
+    if (cartActivity) {
+      navigate("/cart");
+    }
+  }
+
   return (
     <>
       <div className="header-controls-pics">
         <div onClick={handleClick} data-id="search-expander" className="header-controls-pic header-controls-search"></div>
-        <div className="header-controls-pic header-controls-cart">
-          <div className="header-controls-cart-full">1</div>
+        <div onClick={goToCart} className="header-controls-pic header-controls-cart" style={cartActivity ? {} : {cursor: "default"}}>
+          {cartActivity && <div className="header-controls-cart-full">{products.length}</div>}
           <div className="header-controls-cart-menu"></div>
         </div>
       </div>

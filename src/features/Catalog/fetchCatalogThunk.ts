@@ -1,4 +1,4 @@
-import { BosaNogaAPI } from "../../entities/BosaNoga";
+import { BosaNogaAPI } from "../../entities/Service";
 import { UnknownAction } from "redux";
 import { RootState } from "../../app/store";
 import { ThunkAction } from "redux-thunk";

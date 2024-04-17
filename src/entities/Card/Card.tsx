@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { ProductCard } from "../BosaNoga";
+import { ProductCard } from "../Service";
 import { useNavigate } from "react-router-dom";
 
 const Card: FC<{ item: ProductCard }> = ({ item }) => {

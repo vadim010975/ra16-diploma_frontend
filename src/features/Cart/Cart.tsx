@@ -1,6 +1,6 @@
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { removeProduct, selectCart } from "./cartSlice";
-import { ProductCart } from "../../entities/BosaNoga";
+import { ProductCart } from "../../entities/Service";
 
 export default function Cart() {
 
